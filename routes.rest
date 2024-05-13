@@ -1,25 +1,29 @@
 //LOCALHOST
 ### Get all contacts
-GET http://localhost:3000/songs
+GET http://localhost:3001/songs
 
 ### Get contacts by id
-GET http://localhost:3000/songs/6630129e30d468335ef3585a
+GET http://localhost:3001/songs/664296c053f12b7b54f02d97
 
 
 ### Create Contact
-POST http://localhost:3000/songs HTTP/1.1
+POST http://localhost:3001/songs HTTP/1.1
 content-type: application/json
 
 {
-    "email": "AngelloRuiz@gmail.com",
-    "songname": "Angelus",
-    "name": "Angello Antonio",
-    "ipaddress": "12.12.154.00"
+    "band": "Pedro Suarez Vertiz ",
+    "songs": [
+        {"title": "lo olvide",
+         "time": "3:25", 
+         "album": "la cama me da vueltas",
+         "lenght": 452, 
+         "genre": "Balada"}
+         ]
 }
 
 
 ### Put contact
-PUT http://localhost:3000/songs/663013db30d468335ef3585d HTTP/1.1
+PUT http://localhost:3001/songs/663013db30d468335ef3585d HTTP/1.1
 content-type: application/json
 
 {
@@ -30,6 +34,6 @@ content-type: application/json
 }
 
 ### DELETE contact
-DELETE http://localhost:3000/songs/66365e9e8e63a434b4c28551
+DELETE http://localhost:3001/songs/66365e9e8e63a434b4c28551
 
 
