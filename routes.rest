@@ -1,0 +1,35 @@
+//LOCALHOST
+### Get all contacts
+GET http://localhost:3000/songs
+
+### Get contacts by id
+GET http://localhost:3000/songs/6630129e30d468335ef3585a
+
+
+### Create Contact
+POST http://localhost:3000/songs HTTP/1.1
+content-type: application/json
+
+{
+    "email": "AngelloRuiz@gmail.com",
+    "songname": "Angelus",
+    "name": "Angello Antonio",
+    "ipaddress": "12.12.154.00"
+}
+
+
+### Put contact
+PUT http://localhost:3000/songs/663013db30d468335ef3585d HTTP/1.1
+content-type: application/json
+
+{
+    "email": "Ricardo@gmail.com",
+    "songname": "Petardo",
+    "name": "Ricardo",
+    "ipaddress": "55.55.555.00"
+}
+
+### DELETE contact
+DELETE http://localhost:3000/songs/66365e9e8e63a434b4c28551
+
+
