@@ -33,11 +33,13 @@ const createsong = async (req, res) => {
     const bandExists = await mongodb
       .getDatabase()
       .db()
-      .collection('songs')
+      .collection("songs")
       .findOne({ band });
 
     if (bandExists) {
-      res.status(400).json({ message: 'La banda ya existe en la base de datos.' });
+      res
+        .status(400)
+        .json({ message: "La banda ya existe en la base de datos." });
       return;
     }
 
@@ -52,7 +54,7 @@ const createsong = async (req, res) => {
         time: songData.time,
         album: songData.album,
         length: songData.length,
-        genre: songData.genre
+        genre: songData.genre,
       };
 
       // Agregar la canción al array de canciones
@@ -62,57 +64,54 @@ const createsong = async (req, res) => {
     // Crear un objeto de banda con el nombre de la banda y el array de canciones
     const newBand = {
       band,
-      songs: songsArray
+      songs: songsArray,
     };
 
     // Insertar la banda con sus canciones en la base de datos
-    const response = await mongodb.getDatabase().db().collection('songs').insertOne(newBand);
+    const response = await mongodb
+      .getDatabase()
+      .db()
+      .collection("songs")
+      .insertOne(newBand);
 
     if (response.acknowledged) {
       res.status(201).json(newBand);
     } else {
-      res.status(500).json({ message: 'Ha ocurrido un error al añadir la banda.' });
+      res
+        .status(500)
+        .json({ message: "Ha ocurrido un error al añadir la banda." });
     }
   } catch (error) {
-    console.error('Error al añadir la banda:', error);
-    res.status(500).json({ message: 'Ha ocurrido un error interno.' });
+    console.error("Error al añadir la banda:", error);
+    res.status(500).json({ message: "Ha ocurrido un error interno." });
   }
 };
-
-// const createsong = async (req, res) => {
-//   //#swagger.tags=['songs']
-//   const song = {
-//     band: req.body.band,
-//     songs: req.body.songs,
-//   };
-//   const response = await mongodb
-//     .getDatabase()
-//     .db()
-//     .collection("songs")
-//     .insertOne(song);
-//   if (response.acknowledged) {
-//     res.status(204).send();
-//   } else {
-//     res
-//       .status(500)
-//       .json(response.error || "Some error occurred while update the song.");
-//   }
-// };
 
 const updatesong = async (req, res) => {
   //#swagger.tags=['songs']
   const songId = new ObjectId(req.params.id);
-  const song = {
-    songname: req.body.songname,
-    email: req.body.email,
-    name: req.body.name,
-    ipaddress: req.body.ipaddress,
+  const band = req.body.band;
+  const songs = [
+    {
+      title: req.body.songs[0].title,
+      time: req.body.songs[0].time,
+      album: req.body.songs[0].album,
+      length: req.body.songs[0].length,
+      genre: req.body.songs[0].genre
+    },
+  ];
+
+  // Crear un objeto de banda con el nombre de la banda y el array de canciones
+  const newBand = {
+    band,
+    songs,
   };
+
   const response = await mongodb
     .getDatabase()
     .db()
     .collection("songs")
-    .replaceOne({ _id: songId }, song);
+    .replaceOne({ _id: songId }, newBand);
   if (response.modifiedCount > 0) {
     res.status(204).send();
   } else {

@@ -11,29 +11,35 @@ POST http://localhost:3001/songs HTTP/1.1
 content-type: application/json
 
 {
-    "band": "Pedro Suarez Vertiz ",
+    "band": "RedBone2",
     "songs": [
-        {"title": "lo olvide",
-         "time": "3:25", 
-         "album": "la cama me da vueltas",
-         "lenght": 452, 
-         "genre": "Balada"}
+        {"title": "Come and get your love",
+         "time": "3:27", 
+         "album": "Wovoka",
+         "length": 300, 
+         "genre": "Rock"}
          ]
 }
 
 
 ### Put contact
-PUT http://localhost:3001/songs/663013db30d468335ef3585d HTTP/1.1
+PUT http://localhost:3001/songs/6642a14da4cc8527dbe56205 HTTP/1.1
 content-type: application/json
-
+ 
 {
-    "email": "Ricardo@gmail.com",
-    "songname": "Petardo",
-    "name": "Ricardo",
-    "ipaddress": "55.55.555.00"
+    "band": "Pedro Suarez Vertiz",
+    "songs": [
+        {"title": "Me estoy enamorando",
+         "time": "4:41", 
+         "album": "Póntelo en le lengua",
+         "length": 400, 
+         "genre": "Rock"}
+         ]
 }
+  
 
+ 
 ### DELETE contact
-DELETE http://localhost:3001/songs/66365e9e8e63a434b4c28551
+DELETE http://localhost:3001/songs/6643f84f8c6b888598ea1768
 
 
