@@ -28,7 +28,7 @@ const createsong = async (req, res) => {
   //#swagger.tags=['songs']
 
   const { band, songs } = req.body;
-
+  console.log(req.body);
   try {
     const bandExists = await mongodb
       .getDatabase()

@@ -1,15 +1,23 @@
-const express = require('express');
+const express = require("express");
+const path = require("path");
+const regValidate = require("../utilities/validation");
+
 const router = express.Router();
-const songsController = require('../controllers/songs');
+const songsController = require("../controllers/songs");
 
-router.get('/', songsController.getAll);
+router.get("/", songsController.getAll);
 
-router.get('/:id', songsController.getSingle);
+router.get("/:id", songsController.getSingle);
 
-router.post('/', songsController.createsong);
+router.post(
+  "/",
+  regValidate.registationRules(),
+  regValidate.checkRegData,
+  songsController.createsong
+);
 
-router.put('/:id', songsController.updatesong);
+router.put("/:id", songsController.updatesong);
 
-router.delete('/:id', songsController.deletesong);
+router.delete("/:id", songsController.deletesong);
 
 module.exports = router;

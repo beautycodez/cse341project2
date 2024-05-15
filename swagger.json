@@ -56,7 +56,37 @@
                   "example": "any"
                 },
                 "songs": {
-                  "example": "any"
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "title": {
+                        "type": "string",
+                        "example": "Rayando el Sol",
+                        "description": "El título de la canción."
+                      },
+                      "time": {
+                        "type": "string",
+                        "example": "4:03",
+                        "description": "La duración de la canción en formato HH:MM."
+                      },
+                      "album": {
+                        "type": "string",
+                        "example": "Falta Amor",
+                        "description": "El álbum al que pertenece la canción."
+                      },
+                      "length": {
+                        "type": "integer",
+                        "example": 258,
+                        "description": "La duración de la canción en segundos."
+                      },
+                      "genre": {
+                        "type": "string",
+                        "example": "Rock",
+                        "description": "El género de la canción."
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -116,17 +146,41 @@
             "schema": {
               "type": "object",
               "properties": {
-                "songname": {
+                "band": {
                   "example": "any"
                 },
-                "email": {
-                  "example": "any"
-                },
-                "name": {
-                  "example": "any"
-                },
-                "ipaddress": {
-                  "example": "any"
+                "songs": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "title": {
+                        "type": "string",
+                        "example": "Rayando el Sol",
+                        "description": "El título de la canción."
+                      },
+                      "time": {
+                        "type": "string",
+                        "example": "4:03",
+                        "description": "La duración de la canción en formato HH:MM."
+                      },
+                      "album": {
+                        "type": "string",
+                        "example": "Falta Amor",
+                        "description": "El álbum al que pertenece la canción."
+                      },
+                      "length": {
+                        "type": "integer",
+                        "example": 258,
+                        "description": "La duración de la canción en segundos."
+                      },
+                      "genre": {
+                        "type": "string",
+                        "example": "Rock",
+                        "description": "El género de la canción."
+                      }
+                    }
+                  }
                 }
               }
             }
