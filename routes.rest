@@ -9,11 +9,11 @@ GET http://localhost:3001/songs/664296c053f12b7b54f02d97
 ### Create Contact
 POST http://localhost:3001/songs HTTP/1.1
 content-type: application/json
- 
+  
 {
-    "band": "e",
+    "band": "Example Band",
     "songs": [
-        {"title": "Come and get your love",
+        {"title": "a",
          "time": "3:27", 
          "album": "Wovoka",
          "length": 300, 
@@ -40,6 +40,6 @@ content-type: application/json
 
  
 ### DELETE contact
-DELETE http://localhost:3001/songs/664536956c3fd454ea81f7ae
+DELETE http://localhost:3001/songs/6646862dbb556031e05b1bfc
 
 

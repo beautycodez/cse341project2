@@ -10,10 +10,15 @@ validate.registationRules = () => {
     body("band")
       .trim()
       .escape()
-      .isEmail()
       .notEmpty()
       .isLength({ min: 2 })
       .withMessage("Please provide a band name."),
+      body("songs.*.title")
+      .trim()
+      .escape()
+      .notEmpty()
+      .isLength({ min: 2 })
+      .withMessage("Please provide an email.")
   ];
 };
 
