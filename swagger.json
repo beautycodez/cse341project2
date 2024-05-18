@@ -5,7 +5,7 @@
     "description": "songs Api",
     "version": "1.0.0"
   },
-  "host": "project2-vum4.onrender.com",
+  "host": "project2-3fe3.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
