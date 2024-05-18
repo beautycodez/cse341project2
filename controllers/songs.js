@@ -1,13 +1,18 @@
 const mongodb = require("../data/database");
 const ObjectId = require("mongodb").ObjectId;
+const Api404Error = require("../baseError/api404Error");
 
 const getAll = async (req, res) => {
   //#swagger.tags=['songs']
-  const result = await mongodb.getDatabase().db().collection("songs").find();
-  result.toArray().then((songs) => {
-    res.setHeader("Content-Type", "application/json");
-    res.status(200).json(songs);
-  });
+  try {
+    const result = await mongodb.getDatabase().db().collection("songs").find();
+    result.toArray().then((songs) => {
+      res.setHeader("Content-Type", "application/json");
+      res.status(200).json(songs);
+    });
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const getSingle = async (req, res) => {
@@ -18,10 +23,14 @@ const getSingle = async (req, res) => {
     .db()
     .collection("songs")
     .find({ _id: songId });
-  result.toArray().then((songs) => {
-    res.setHeader("Content-Type", "application/json");
-    res.status(200).json(songs);
-  });
+  if (result === null) {
+    throw new Api404Error(`User with id: ${req.params.id} not found.`);
+  } else {
+    result.toArray().then((songs) => {
+      res.setHeader("Content-Type", "application/json");
+      res.status(200).json(songs);
+    });
+  }
 };
 
 const createsong = async (req, res) => {
@@ -97,7 +106,7 @@ const updatesong = async (req, res) => {
       time: req.body.songs[0].time,
       album: req.body.songs[0].album,
       length: req.body.songs[0].length,
-      genre: req.body.songs[0].genre
+      genre: req.body.songs[0].genre,
     },
   ];
 

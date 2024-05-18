@@ -16,7 +16,12 @@ router.post(
   songsController.createsong
 );
 
-router.put("/:id", songsController.updatesong);
+router.put(
+  "/:id",
+  regValidate.registationRules(),
+  regValidate.checkRegData,
+  songsController.updatesong
+);
 
 router.delete("/:id", songsController.deletesong);
 

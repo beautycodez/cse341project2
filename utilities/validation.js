@@ -18,7 +18,32 @@ validate.registationRules = () => {
       .escape()
       .notEmpty()
       .isLength({ min: 2 })
-      .withMessage("Please provide an email.")
+      .withMessage("Please provide an email."),
+      body("songs.*.time")
+      .trim()
+      .escape()
+      .notEmpty()
+      .isLength({ min: 4 })
+      .withMessage("Please provide an the time."),
+      body("songs.*.album")
+      .trim()
+      .escape()
+      .notEmpty()
+      .isLength({ min: 2 })
+      .withMessage("Please provide an album."),
+      body("songs.*.length")
+        .trim()
+        .escape()
+        .notEmpty()
+        .withMessage("Please provide the length of the song.")
+        .isNumeric()
+        .withMessage("Length must be a number in seconds."),
+      body("songs.*.genre")
+      .trim()
+      .escape()
+      .notEmpty()
+      .isLength({ min: 2 })
+      .withMessage("Please provide an album.")
   ];
 };
 
