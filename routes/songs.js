@@ -4,8 +4,10 @@ const regValidate = require("../utilities/validation");
 
 const router = express.Router();
 const songsController = require("../controllers/songs");
+const { isAuthenticated } = require("../utilities/authenticate");
+const {requiresAuth} = require('express-openid-connect')
 
-router.get("/", songsController.getAll);
+router.get("/",requiresAuth(), songsController.getAll);
 
 router.get("/:id", songsController.getSingle);
 
@@ -23,6 +25,6 @@ router.put(
   songsController.updatesong
 );
 
-router.delete("/:id", songsController.deletesong);
+router.delete("/:id", isAuthenticated, songsController.deletesong);
 
 module.exports = router;

@@ -11,7 +11,7 @@ POST http://localhost:3001/songs HTTP/1.1
 content-type: application/json
   
 {
-    "band": "Example Band",
+    "band": "a",
     "songs": [
         {"title": "a",
          "time": "3:27", 

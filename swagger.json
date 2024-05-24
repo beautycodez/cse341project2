@@ -10,6 +10,32 @@
   "schemes": [
     "https"
   ],
+  "components": {
+    "securitySchemes": {
+      "oAuthSample": {
+        "type": "oauth2",
+        "description": "This API uses OAuth 2 with the implicit grant flow. [More info](https://api.example.com/docs/auth)",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "project2-3fe3.onrender.com/oauth2/authorize",
+            "tokenUrl": "project2-3fe3.onrender.com/oauth/token",
+            "scopes": {
+              "read_songs": "read your songs",
+              "write_songs": "modify songs in your account"
+            }
+          }
+        
+        }
+      }  
+    }
+  },
+  "security": [
+    {
+      "oAuthSample": [
+        "read_songs",
+        "write_songs"
+      ]}]
+    ,
   "paths": {
     "/": {
       "get": {
@@ -29,9 +55,17 @@
         "tags": [
           "songs"
         ],
-        "description": "",
+        "description": "Get all the songs",
         "produces": [
           "application/json"
+        ],
+        
+        "security": [
+          {
+            "oAuthSample": [
+              "read_songs"
+            ]
+          }
         ],
         "responses": {
           "200": {
